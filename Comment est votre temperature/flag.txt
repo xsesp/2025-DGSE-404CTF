@@ -1,0 +1,25 @@
+404CTF{0fa8b84a|19|76}
+
+Adresse I2C
+>>> hex(0b00001111101010001011100001001010)
+'0x0f a8 b8 4a'
+
+
+
+T° = 0x5E - 0x53 - CRC : 0x26
+H° = 0xA8 - 0X9C - CTC : 0x0D
+
+
+ i2c_write(i2c_addr=0x44, tx_bytes=[0xFD])
+ wait_seconds(0.01)
+ rx_bytes = i2c_read(i2c_addr=0x44, number_of_bytes=6)
+ t_ticks = rx_bytes[0] * 256 + rx_bytes[1]
+ checksum_t = rx_bytes[2]
+ rh_ticks = rx_bytes[3] * 256 + rx_bytes[4]
+ checksum_rh = rx_bytes[5]
+ t_degC = -45 + 175 * t_ticks/65535
+ rh_pRH = -6 + 125 * rh_ticks/65535
+ if (rh_pRH > 100):
+ rh_pRH = 100
+ if (rh_pRH < 0):
+ rh_pRH = 0

